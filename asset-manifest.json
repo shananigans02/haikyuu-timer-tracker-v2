@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/timer-tracker-react-redux-ver/static/css/main.39cfdf93.css",
-    "main.js": "/timer-tracker-react-redux-ver/static/js/main.88fcb296.js",
-    "static/js/453.99ab934c.chunk.js": "/timer-tracker-react-redux-ver/static/js/453.99ab934c.chunk.js",
+    "main.css": "/timer-tracker-react-redux-ver/static/css/main.26332f7e.css",
+    "main.js": "/timer-tracker-react-redux-ver/static/js/main.fd8c2b1a.js",
+    "static/js/453.9b20564e.chunk.js": "/timer-tracker-react-redux-ver/static/js/453.9b20564e.chunk.js",
     "index.html": "/timer-tracker-react-redux-ver/index.html",
-    "main.39cfdf93.css.map": "/timer-tracker-react-redux-ver/static/css/main.39cfdf93.css.map",
-    "main.88fcb296.js.map": "/timer-tracker-react-redux-ver/static/js/main.88fcb296.js.map",
-    "453.99ab934c.chunk.js.map": "/timer-tracker-react-redux-ver/static/js/453.99ab934c.chunk.js.map"
+    "main.26332f7e.css.map": "/timer-tracker-react-redux-ver/static/css/main.26332f7e.css.map",
+    "main.fd8c2b1a.js.map": "/timer-tracker-react-redux-ver/static/js/main.fd8c2b1a.js.map",
+    "453.9b20564e.chunk.js.map": "/timer-tracker-react-redux-ver/static/js/453.9b20564e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.39cfdf93.css",
-    "static/js/main.88fcb296.js"
+    "static/css/main.26332f7e.css",
+    "static/js/main.fd8c2b1a.js"
   ]
 }
