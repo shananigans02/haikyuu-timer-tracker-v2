@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import TimerComponent from './TimerComponent';
+import NavbarComponent from './NavbarComponent';
+import StatsComponent from './StatsComponent';
 
 function App() {
+  const [page, setPage] = useState('tracker');
+  const [theme, setTheme] = useState('light');
+
+  const containerBorderColor = theme === 'dark' ? 'border-customOrange' : 'border-darkBlue';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App ${theme === 'dark' ? 'bg-darkBlue' : 'bg-customOrange'} min-h-screen overflow-hidden`}>
+      <NavbarComponent setPage={setPage} setTheme={setTheme} theme={theme} />
+
+      <div className={`mx-[2vw] my-4 mb-[2vw] p-4 border rounded-xl ${containerBorderColor}`}>
+      {page === 'tracker' ? <TimerComponent theme={theme} /> : <StatsComponent theme={theme} />}
+      </div>
     </div>
   );
 }
