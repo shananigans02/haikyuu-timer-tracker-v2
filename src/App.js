@@ -13,7 +13,7 @@ function App() {
     <div className={`App ${theme === 'dark' ? 'bg-darkBlue' : 'bg-customOrange'} min-h-screen overflow-hidden`}>
       <NavbarComponent setPage={setPage} setTheme={setTheme} theme={theme} />
 
-      <div className={`mx-[2vw] my-4 mb-[2vw] p-4 border rounded-xl ${containerBorderColor}`}>
+      <div className={`mx-[2vw] my-4 mb-[2vw] p-4 border rounded-xl shadow ${containerBorderColor}`}>
       {page === 'tracker' ? <TimerComponent theme={theme} /> : <StatsComponent theme={theme} />}
       </div>
     </div>

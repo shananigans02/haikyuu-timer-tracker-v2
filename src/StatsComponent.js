@@ -91,6 +91,20 @@ const StatsComponent = ({ theme }) => {
     dispatch(updatePomodoroGoal({ category, goal: newGoal }));
   };
 
+  const handleShare = () => {
+    let message = "today's gains: \n";
+    Object.keys(categoryStats).forEach((key) => {
+      const { category, timeSpent } = categoryStats[key];
+      message += `${formatTime(timeSpent)}: ${category}\n`
+    })
+    
+    const encodedMessage = encodeURIComponent(message);
+
+    const xUrl = `https://x.com/compose/post?text=${encodedMessage}`;
+
+    window.open(xUrl, '_blank');
+  }
+
   // Determine theme classes based on the selected theme
   const baseColor = theme === 'dark' ? 'text-customOrange' : 'text-darkBlue';
   const borderColor = theme === 'dark' ? 'border-customOrange rounded-xl' : 'border-darkBlue rounded-xl';
@@ -135,6 +149,14 @@ const StatsComponent = ({ theme }) => {
         <h3 className="font-semibold">total time worked today:</h3>
         <p>{formatTime(totalTimeSpentToday)}</p>
       </div>
+      
+      <button
+        onClick={handleShare}
+        className={`max-w-lg mt-6 px-6 py-3 border rounded-xl shadow ${baseColor} ${borderColor}`}
+      >
+        share
+      </button>
+      
     </div>
   );
 };

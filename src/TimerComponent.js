@@ -48,7 +48,7 @@ const TimerComponent = ({ theme }) => {
     dispatch(addPomodoro(pomodoro));
 
     if (isManualRecord) {
-      alert("Grind recorded!");
+      alert("grind recorded!");
       stopTimer();
     }
   }, [currentCategory, duration, startTime, totalElapsedTime, lastStartTime, dispatch, stopTimer]);
@@ -58,7 +58,7 @@ const TimerComponent = ({ theme }) => {
       dispatch(updateTimerState({ isRunning: false }));
       setTimerEnded(true); 
       logPomodoro();
-      alert("Time's up!");  
+      alert("time's up!");  
       const audio = new Audio(`${process.env.PUBLIC_URL}/haikyuu commercial break soft melody (ringtone) copy.mp3`);
       audio.play();
     }
@@ -91,12 +91,17 @@ const TimerComponent = ({ theme }) => {
 
     return () => {
       clearInterval(timer);
-      document.title = "It's lock-in time";
+      document.title = "it's lock in time";
     };
   }, [isRunning, totalElapsedTime, lastStartTime, duration, handleTimerEnd, dispatch]);
 
   const toggleTimer = () => {
     const now = Date.now();
+    // if category input is empty, alert
+    if (!currentCategory.trim()) {
+      alert("pls tell us what you are grinding ~");
+      return;
+    }
     if (isRunning) {
       const timeSpentSinceLastStart = Math.floor((now - lastStartTime) / 1000);
       dispatch(updateTimerState({
@@ -131,13 +136,17 @@ const TimerComponent = ({ theme }) => {
   };
 
   // Determine theme classes based on the selected theme
-  // Updated theme classes
   const baseColor = theme === 'dark' ? 'bg-darkBlue text-customOrange' : 'bg-customOrange text-darkBlue';
   const borderColor = theme === 'dark' ? 'border-customOrange' : 'border-darkBlue';
 
   return (
     <div className={`flex flex-col items-center justify-center ${baseColor}`}>
-      <div className={`text-[11rem] font-mono p-1 mb-1`}>
+      <div 
+        className={`font-mono p-1 mb-1`}
+        style={{
+          fontSize: `clamp(4rem, 20vw, 11rem)`,
+        }}
+      >
         {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}
       </div>
 

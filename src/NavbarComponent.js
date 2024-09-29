@@ -7,7 +7,7 @@ const NavbarComponent = ({ setPage, setTheme, theme }) => {
   };
 
   return (
-    <nav className={`flex justify-between items-center py-4 px-8 border rounded-xl mx-[2vw] mt-4 mb-4 ${
+    <nav className={`shadow flex justify-between items-center py-4 px-8 border rounded-xl mx-[2vw] mt-4 mb-4 ${
       theme === 'dark' 
         ? 'bg-transparent text-customOrange border-customOrange' 
         : 'bg-transparent text-darkBlue border-darkBlue'
