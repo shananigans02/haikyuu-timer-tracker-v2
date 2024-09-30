@@ -2,7 +2,7 @@
   "name": "pomodoro-v3",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shananigans02.github.io/timer-tracker-react-redux-ver",
+  "homepage": "https://github.com/shananigans02/haikyuu-timer-tracker-v2",
   "dependencies": {
     "18": "^0.0.0",
     "@reduxjs/toolkit": "^2.2.7",

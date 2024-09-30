@@ -15,6 +15,7 @@ const TimerComponent = ({ theme }) => {
   
   const [duration, setDuration] = useState(30);
   const [timerEnded, setTimerEnded] = useState(false);
+  // const [notification, setNotification] = useState('');
 
   const pomodoroList = useSelector((state) => state.pomodoro.pomodoroList);
   const dispatch = useDispatch();
@@ -58,9 +59,14 @@ const TimerComponent = ({ theme }) => {
       dispatch(updateTimerState({ isRunning: false }));
       setTimerEnded(true); 
       logPomodoro();
-      alert("time's up!");  
       const audio = new Audio(`${process.env.PUBLIC_URL}/haikyuu commercial break soft melody (ringtone) copy.mp3`);
       audio.play();
+
+      setTimeout(() => {
+        alert("time's up - you did it!");  
+      }, 100);
+
+      // setNotification("time's up!");
     }
   }, [logPomodoro, timerEnded, dispatch]);
 
@@ -72,7 +78,7 @@ const TimerComponent = ({ theme }) => {
         const elapsedTime = Math.floor((now - lastStartTime) / 1000);
         const newTimeLeft = Math.max(0, duration * 60 - totalElapsedTime - elapsedTime);
 
-        console.log('Updating timer:', { now, lastStartTime, elapsedTime, newTimeLeft, duration, totalElapsedTime });
+        // console.log('Updating timer:', { now, lastStartTime, elapsedTime, newTimeLeft, duration, totalElapsedTime });
 
         dispatch(updateTimerState({ timeLeft: newTimeLeft }));
 
@@ -206,7 +212,7 @@ const TimerComponent = ({ theme }) => {
               <CustomCheckbox
                 checked={true}
                 onChange={() => {
-                  if (window.confirm("Delete this entry?")) {
+                  if (window.confirm("delete this entry?")) {
                     handleDeletePomodoro(index);
                   }
                 }}
@@ -219,6 +225,16 @@ const TimerComponent = ({ theme }) => {
           ))}
         </ul>
       </div>
+
+      {/* times up notification banner
+      <div className={`flex flex-col items-center justify-center ${baseColor}`}>
+        {notification && (
+          <div className="notification">
+            {notification}
+          </div>
+        )}
+      </div> */}
+
     </div>
   );
 };
