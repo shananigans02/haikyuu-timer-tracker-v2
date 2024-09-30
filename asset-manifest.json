@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/timer-tracker-react-redux-ver/static/css/main.b7e898a1.css",
-    "main.js": "/timer-tracker-react-redux-ver/static/js/main.b246b9d3.js",
-    "static/js/453.9b20564e.chunk.js": "/timer-tracker-react-redux-ver/static/js/453.9b20564e.chunk.js",
-    "index.html": "/timer-tracker-react-redux-ver/index.html",
-    "main.b7e898a1.css.map": "/timer-tracker-react-redux-ver/static/css/main.b7e898a1.css.map",
-    "main.b246b9d3.js.map": "/timer-tracker-react-redux-ver/static/js/main.b246b9d3.js.map",
-    "453.9b20564e.chunk.js.map": "/timer-tracker-react-redux-ver/static/js/453.9b20564e.chunk.js.map"
+    "main.css": "/shananigans02/haikyuu-timer-tracker-v2/static/css/main.b7e898a1.css",
+    "main.js": "/shananigans02/haikyuu-timer-tracker-v2/static/js/main.0defcbe1.js",
+    "static/js/453.9b20564e.chunk.js": "/shananigans02/haikyuu-timer-tracker-v2/static/js/453.9b20564e.chunk.js",
+    "index.html": "/shananigans02/haikyuu-timer-tracker-v2/index.html",
+    "main.b7e898a1.css.map": "/shananigans02/haikyuu-timer-tracker-v2/static/css/main.b7e898a1.css.map",
+    "main.0defcbe1.js.map": "/shananigans02/haikyuu-timer-tracker-v2/static/js/main.0defcbe1.js.map",
+    "453.9b20564e.chunk.js.map": "/shananigans02/haikyuu-timer-tracker-v2/static/js/453.9b20564e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b7e898a1.css",
-    "static/js/main.b246b9d3.js"
+    "static/js/main.0defcbe1.js"
   ]
 }
