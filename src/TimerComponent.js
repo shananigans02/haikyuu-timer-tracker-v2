@@ -39,8 +39,8 @@ const TimerComponent = ({ theme }) => {
     const pomodoro = {
       category: currentCategory,
       duration,
-      startTime: new Date(startTime),  
-      endTime: new Date(now),  
+      startTime: startTime,  
+      endTime: now,  
       elapsedTime: totalTimeSpent < 60
         ? `${totalTimeSpent} seconds`
         : `${Math.floor(totalTimeSpent / 60)} mins`,
@@ -55,10 +55,16 @@ const TimerComponent = ({ theme }) => {
   }, [currentCategory, duration, startTime, totalElapsedTime, lastStartTime, dispatch, stopTimer]);
 
   const handleTimerEnd = useCallback(() => {
-    if (!timerEnded) { 
+    if (!timerEnded && timeLeft <= 0) { 
       dispatch(updateTimerState({ isRunning: false }));
       setTimerEnded(true); 
+      dispatch(updateTimerState({
+        isRunning: false,
+        timeLeft: 0,
+      }))
+
       logPomodoro();
+
       const audio = new Audio(`${process.env.PUBLIC_URL}/haikyuu commercial break soft melody (ringtone) copy.mp3`);
       audio.play();
 
@@ -68,7 +74,7 @@ const TimerComponent = ({ theme }) => {
 
       // setNotification("time's up!");
     }
-  }, [logPomodoro, timerEnded, dispatch]);
+  }, [logPomodoro, timerEnded, timeLeft, dispatch]);
 
   useEffect(() => {
     let timer = null;
@@ -88,6 +94,7 @@ const TimerComponent = ({ theme }) => {
 
         if (newTimeLeft <= 0) {
           handleTimerEnd();
+          clearInterval(timer);
         }
       };
 
@@ -103,7 +110,7 @@ const TimerComponent = ({ theme }) => {
 
   const toggleTimer = () => {
     const now = Date.now();
-    // if category input is empty, alert
+    
     if (!currentCategory.trim()) {
       alert("pls tell us what you are grinding ~");
       return;
@@ -128,7 +135,11 @@ const TimerComponent = ({ theme }) => {
         setTimerEnded(false);
       } else {
         console.log('Resuming timer:', { timeLeft, now, currentCategory });
-        dispatch(updateTimerState({ lastStartTime: now, isRunning: true }));
+        dispatch(updateTimerState({ 
+          lastStartTime: now, 
+          isRunning: true,
+          startTime: startTime || now
+       }));
       }
     }
   };
@@ -137,8 +148,12 @@ const TimerComponent = ({ theme }) => {
     dispatch(deletePomodoro(index));
   };
 
-  const formatDateTime = (date) => {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const formatDateTime = (timestamp) => {
+    return new Date(timestamp).toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
   };
 
   // Determine theme classes based on the selected theme
@@ -219,7 +234,7 @@ const TimerComponent = ({ theme }) => {
                 theme={theme}
               />
               <span>
-                {formatDateTime(new Date(pomodoro.startTime))} - {formatDateTime(new Date(pomodoro.endTime))} ({pomodoro.elapsedTime}): {pomodoro.category}
+                {formatDateTime(pomodoro.startTime)} - {formatDateTime(pomodoro.endTime)} ({pomodoro.elapsedTime}): {pomodoro.category}
               </span>
             </li>
           ))}
